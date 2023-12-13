@@ -1,11 +1,15 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  /* display: flex;
+  flex-direction: row; */
+  /* height: 2rem; */
+  background-color: rgb(130, 126, 122);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* 
+.App_sec{
+  width: 50%;
+  padding:1rem  0;
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

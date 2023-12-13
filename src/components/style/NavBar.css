@@ -1,0 +1,38 @@
+*{
+    /* background-color: aqua; */
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+}
+.nav{
+    padding: 1rem 1rem;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
+}
+.nav_sec{
+    text-decoration: none;
+}
+.nav_link{
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+
+
+
+@media screen and (max-widht:600px){
+    .container {
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+        }
+        .nav{
+            width: 100%;
+        }
+}
