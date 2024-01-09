@@ -1,25 +1,57 @@
 
-import { createContext,useContext, useState } from "react";
+import { createContext,useContext, useEffect, useState } from "react";
 
 export const AuthContext=createContext();
 
 export const AuthProvider=({children})=>{
 
     const [token,setToken]=useState(localStorage.getItem("token"));
-    const loggedIn=!!token;
+    // const [loggedIn,setLoggedIn]=useState(!!token);
+    let loggedIn=!!token;
+
+    const[users,setUsers]=useState("");
 
     // console.log(loggedIn,token);
 
     const saveTokenInLocalStr = (servertoken) =>{
+        setToken(servertoken);
         return localStorage.setItem("token",servertoken)
     }
 
     const logoutUser=()=>{
         setToken('');
-        return localStorage.removeItem("token");
+        return localStorage.removeItem("token");          
     }
+
+    //Authenication 
+    const userAuthentication=async()=>{
+        try{
+            let response = await fetch("http://localhost:5000/api/auth/user",{
+                method:"GET",
+                headers:{
+                    Authorization:`Bearer ${token}`,
+                },
+            });
+
+            if(response.ok){
+                const data=await response.json();
+                console.log(data.userData)
+                setUsers(data.userData);
+            }
+        }catch(err){
+            console.log("error occur while calling userauthe",err)
+        }
+
+    };
+
+    /* eslint-disable react-hooks/exhaustive-deps */
+    useEffect(() => {
+        userAuthentication();
+    }, []);
+    /* eslint-disable react-hooks/exhaustive-deps */
+
     return(
-        <AuthContext.Provider value={{ loggedIn,saveTokenInLocalStr, logoutUser }}>
+        <AuthContext.Provider value={{ loggedIn, saveTokenInLocalStr, logoutUser, users}}>
         {children}
     </AuthContext.Provider>
     )

@@ -40,3 +40,8 @@
     transform: rotate(360deg);
   }
 }
+
+.toastBody{
+  font-family: "Atlas Grotesk Web",Arial, Helvetica, sans-serif;
+  font-size: 1rem ;
+}

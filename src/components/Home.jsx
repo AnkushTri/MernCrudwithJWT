@@ -1,4 +1,5 @@
 // import { Analytics } from "./Analytics";
+import { NavLink } from "react-router-dom";
 import Analytics from "./Analytics";
 
 export const Home = () => {
@@ -16,15 +17,15 @@ export const Home = () => {
                 we specialize in providing innovative IT services and solutions
                 tailored to meet your unique needs.
               </p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima suscipit dignissimos voluptatum vero iure quasi blanditiis ex eligendi tenetur nulla beatae aut obcaecati, quis rerum velit nam accusantium, enim ipsam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quod eius ipsam tempore beatae aspernatur pariatur commodi quos rerum. Perspiciatis sed laudantium illum magnam hic ratione mollitia error, repellendus nihil?
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima suscipit dignissimos voluptatum vero iure quasi blanditiis ex eligendi tenetur nulla beatae aut obcaecati, quis rerum velit nam accusantium, enim ipsam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quod eius ipsam tempore beatae aspernatur pariatur commodi quos rerum. Perspiciatis sed laudantium illum magnam hic ratione mollitia error, repellendus nihil?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit, perspiciatis? Aut, eius eos illo ullam placeat cumque sit. Aliquam sapiente animi et laborum rerum ex, porro esse iure provident asperiores. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus aut quo totam, assumenda, delectus minima saepe impedit corrupti, incidunt quis adipisci officia! Rem sed cum, excepturi delectus dicta harum aliquam.
               </p>
               <div className="btn btn-group">
-                <a href="/contact">
-                  <button className="btn">connect now</button>
-                </a>
-                <a href="/services">
-                  <button className="btn secondary-btn">learn more</button>
-                </a>
+                <NavLink to="/contact">
+                  <button className="egister_btn btn"> Connect Now</button>
+                </NavLink >
+                <NavLink to="/service">
+                  <button className="egister_btnn btn secondary-btn">learn more</button>
+                </NavLink>
               </div>
             </div>
 

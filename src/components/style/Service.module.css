@@ -1,0 +1,47 @@
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    /* display:flex; */
+
+
+}
+
+.tex {
+    display: flex;
+    /* margin: 0 1rem; */
+}
+
+.tex>p {
+    margin: 0.5rem 1rem;
+}
+
+.section {
+    /* background-color: blue; */
+    width: 17rem;
+    height: 20rem;
+    /* display:flex; */
+    margin: 0.7rem 1rem;
+    border: 2px solid gray;
+}
+
+.service {}
+
+.service_img {
+    margin-top: 1rem;
+    text-align: center;
+    /* height: 100vh; */
+}
+
+.main>p {}
+
+.title {
+    font-size: 1.5rem;
+    text-align: center;
+}

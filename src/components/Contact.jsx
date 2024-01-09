@@ -1,13 +1,32 @@
 import React ,{useState} from 'react'
+import { useAuth } from '../store/auth';
+
 import { contactUs } from "../service/api";
 
-const Contact = () => {
-  const [user, setUser] = useState({
-    username:"",
-    email: "",
-    message: ""
-  });
+const defaultcontact = {
+  username: "",
+  email: "",
+  message: ""
+  };
 
+const Contact = () => {
+
+  const [user, setUser] = useState(defaultcontact);
+
+  const {users}=useAuth();
+  const [userdata,setUserdata]=useState(true);
+  // console.log(users)
+
+  if(userdata && users){
+    setUser({
+      username:users.username,
+      email:users.email,
+      message:"",
+    })
+    setUserdata(false);
+  }
+
+  
   const onValueChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -19,9 +38,31 @@ const Contact = () => {
     e.preventDefault();
     // console.log(user)
     await contactUs(user);
-    alert("Thanks for contacting us,your response is succesfully sent to Admin");
-    window.location.reload();
-  }
+    try {
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("after contactus: ", data);
+        setUser(defaultcontact)
+        alert("Thanks for contacting us,your response is succesfully sent to Admin");
+        window.location.reload();
+        // navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+    // alert("Thanks for contacting us,your response is succesfully sent to Admin");
+    // window.location.reload();
+
+
 
   return (
     <>
@@ -67,7 +108,8 @@ const Contact = () => {
       </div>
     </div>
     <div className='registration'>
-        <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14420.457763936458!2d86.28694965!3d25.36748075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1f64fb280996d%3A0xc8f814528f7f0da0!2z4KSJ4KSa4KWN4KSaIOCkteCkv-CkpuCljeCkr-CkvuCksuCkryDgpKrgpLDgpK7gpL7gpKjgpILgpKbgpKrgpYHgpLA!5e0!3m2!1shi!2sin!4v1701434408017!5m2!1shi!2sin" width="100%" height="450"  allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14420.457763936458!2d86.28694965!3d25.36748075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1f64fb280996d%3A0xc8f814528f7f0da0!2z4KSJ4KSa4KWN4KSaIOCkteCkv-CkpuCljeCkr-CkvuCksuCkryDgpKrgpLDgpK7gpL7gpKjgpILgpKbgpKrgpYHgpLA!5e0!3m2!1shi!2sin!4v1701434408017!5m2!1shi!2sin" width="100%" height="450" frameBorder="0"
+         allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </>
   )

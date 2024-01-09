@@ -3,6 +3,7 @@ import "./style/SignUp.css";
 // import {registerUser} from '../service/api';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
 
@@ -37,30 +38,19 @@ const handleSubmit = async(e) => {
       body: JSON.stringify(user),
     });
 
+    const responseData = await response.json();
+    console.log("after registartion: ", responseData.extraDetails);
     if (response.ok) {
-      const responseData = await response.json();
-      console.log("after registartion: ", responseData);
-      // toast.success("Registration Successful");
       saveTokenInLocalStr(responseData.token);
+      toast.success("registration succesful!")
       navigate("/");
+    }else{
+      toast.error(responseData.extraDetails ? responseData.extraDetails[0]:responseData.message);
     }
   } catch (error) {
     console.log(error);
   }
 
-    // console.log(user)
-//     try{
-//    const response= await registerUser(user);
-//    console.log(response.status);
-//    console.log(response.status);
-//     if(response.status===201){
-//     setUser(intialvalue);
-//     navigate('/login');
-//     }
-// }catch(err){
-//   console.log("server error while calling register post api");
-// }
-    
   }
 
   return (

@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 // import { loginUser } from '../service/api';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -31,27 +32,19 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
+      const responseData = await response.json();
+      console.log("after login: ", responseData.extraDetails);
       if (response.ok) {
-        const responseData = await response.json();
-        console.log("after login: ", responseData);
-        // toast.success("Registration Successful");
         saveTokenInLocalStr(responseData.token);
+        toast.success("login successful!")
         navigate("/");
+      }else{
+        toast.error(responseData.extraDetails ? responseData.extraDetails[0] : responseData.message);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  //   try{
-  //   const response=await loginUser(user);
-  //   console.log(response.status)
-  //   if(response.status===200){
-  //     setUser({name:"",email:""});
-  //     navigate('/');
-  //   }
-  // }catch(err){
-  //   console.log("server eroor while login");
-  // }
 
   return (
     <div className='registartion'>

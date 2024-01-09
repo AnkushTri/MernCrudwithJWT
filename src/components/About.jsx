@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
 import Analytics from "./Analytics";
 import  './style/About.module.css';
+import { useAuth } from "../store/auth";
 
 export const About = () => {
+
+  const {users}=useAuth();
+
   return (
     <>
       <main>
@@ -10,6 +14,7 @@ export const About = () => {
           <div className="container grid grid-two-cols">
             <div className="hero-content">
               {/* <p>We care to cure your Health</p> */}
+              <p>Hii, {users.username}</p>
 
               <h1>Why Choose Us? </h1>
               <p>
@@ -38,8 +43,10 @@ export const About = () => {
               <div className="btn btn-group">
                 <NavLink to="/contact">
                   <button className="egister_btn btn"> Connect Now</button>
-                </NavLink>
+                </NavLink >
+                <NavLink to="/service">
                 <button className="egister_btnn btn secondary-btn">learn more</button>
+                </NavLink>
               </div>
             </div>
             <div className="hero-image">
