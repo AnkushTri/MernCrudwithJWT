@@ -8,8 +8,10 @@ export const AuthProvider=({children})=>{
     const [token,setToken]=useState(localStorage.getItem("token"));
     // const [loggedIn,setLoggedIn]=useState(!!token);
     let loggedIn=!!token;
+    let Authorization=`Bearer ${token}`;
 
     const[users,setUsers]=useState("");
+    const[isLoading,setIsLoading]=useState(true)
 
     // console.log(loggedIn,token);
 
@@ -37,6 +39,10 @@ export const AuthProvider=({children})=>{
                 const data=await response.json();
                 console.log(data.userData)
                 setUsers(data.userData);
+                setIsLoading(false);
+            }else{
+                console.log("error while fetching");
+                setIsLoading(false);
             }
         }catch(err){
             console.log("error occur while calling userauthe",err)
@@ -51,7 +57,14 @@ export const AuthProvider=({children})=>{
     /* eslint-disable react-hooks/exhaustive-deps */
 
     return(
-        <AuthContext.Provider value={{ loggedIn, saveTokenInLocalStr, logoutUser, users}}>
+        <AuthContext.Provider 
+        value={{ loggedIn, 
+        saveTokenInLocalStr,
+         logoutUser, 
+         users,
+         isLoading,
+         Authorization,
+         }}>
         {children}
     </AuthContext.Provider>
     )

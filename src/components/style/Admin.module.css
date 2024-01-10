@@ -1,0 +1,13 @@
+.body{
+    background-color: black;
+}
+.continer{
+    display: flex;
+}
+.main{
+/* display: flex; */
+}
+.nav{
+    margin:1.5rem 0.5rem;
+    /* display: flex; */
+}
