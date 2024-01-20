@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MernCrudwithJWT/static/css/main.5cc3c697.css",
+    "main.js": "/MernCrudwithJWT/static/js/main.e37e200c.js",
+    "static/js/787.d5fa4d18.chunk.js": "/MernCrudwithJWT/static/js/787.d5fa4d18.chunk.js",
+    "index.html": "/MernCrudwithJWT/index.html",
+    "main.5cc3c697.css.map": "/MernCrudwithJWT/static/css/main.5cc3c697.css.map",
+    "main.e37e200c.js.map": "/MernCrudwithJWT/static/js/main.e37e200c.js.map",
+    "787.d5fa4d18.chunk.js.map": "/MernCrudwithJWT/static/js/787.d5fa4d18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5cc3c697.css",
+    "static/js/main.e37e200c.js"
+  ]
+}
