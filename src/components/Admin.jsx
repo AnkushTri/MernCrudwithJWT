@@ -12,14 +12,14 @@ const Admin = () => {
     const {users,isLoading}  = useAuth();
     // console.log(isLoading,users.isAdmin)
     
-    // if(isLoading){
-    //   return(<h1>Loading...</h1>)
-    // }
-    // if(!users.isAdmin){
-    //   return(
-    //     <Navigate to="/"/>
-    //   )
-    // }
+    if(isLoading){
+      return(<h1>Loading...</h1>)
+    }
+    if(!users.isAdmin){
+      return(
+        <Navigate to="/"/>
+      )
+    }
 
   return (
     
