@@ -8,7 +8,7 @@ const Service = () => {
 
   const getService = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/service");
+      const response = await fetch("https://ankucrud-api.onrender.com/api/service");
       if (response.ok) {
         const data = await response.json();
         console.log(data.services);

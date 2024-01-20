@@ -30,7 +30,7 @@ const handleSubmit = async(e) => {
     e.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:5000/api/auth/registration", {
+    const response = await fetch("https://ankucrud-api.onrender.com/api/auth/registration", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import { useAuth } from '../store/auth'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { toast } from 'react-toastify';
+import {Link} from "react-router-dom";
 
 const Users = () => {
   const { Authorization }=useAuth();
@@ -11,7 +12,7 @@ const Users = () => {
   const deleteUser=async(id)=>{
     console.log(id)
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/users/delete/${id}`, {
+      const response = await fetch(`https://ankucrud-api.onrender.com/api/admin/users/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: Authorization,
@@ -29,7 +30,7 @@ const Users = () => {
 
   const getAllusers=async()=>{
     try{
-    const response = await fetch("http://localhost:5000/api/admin/users",{
+      const response = await fetch("https://ankucrud-api.onrender.com/api/admin/users",{
       method: "GET",
       headers: {
         Authorization: Authorization,
@@ -72,7 +73,7 @@ const Users = () => {
               return <tbody key={currUser._id} >
                 <td>{currUser.username}</td>
                 <td>{currUser.email}</td>
-                <td><FaEdit/></td>
+                <td ><Link to={`/admin/user/${currUser._id}/edit`} style={{color:"white"}}><FaEdit /></Link></td>
                 <td><div onClick={()=>deleteUser(currUser._id)} className='active'><MdDelete /></div></td>
                 </tbody>
             })}

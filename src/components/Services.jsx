@@ -17,7 +17,7 @@ const Services = () => {
   const deleteService = async (id) => {
     console.log(id)
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/services/delete/${id}`, {
+      const response = await fetch(`https://ankucrud-api.onrender.com/api/admin/services/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: Authorization,
@@ -34,7 +34,7 @@ const Services = () => {
 
   const getAllServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin/services", {
+      const response = await fetch("https://ankucrud-api.onrender.com/api/admin/services", {
         method: "GET",
         headers: {
           Authorization: Authorization,

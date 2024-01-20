@@ -15,6 +15,7 @@ import Admin from './components/Admin';
 import Users from './components/Users';
 import Contacts from './components/Contacts';
 import Services from './components/Services';
+import AdminUpdate from './components/AdminUpdate';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path='contacts' element={<Contacts/>} />
           <Route path='services' element={<Services/>} />
          </Route>
+            <Route path='/admin/user/:id/edit' element={<AdminUpdate />} />
           <Route path='/*' element={<Error/>} />
         </Routes>
       </BrowserRouter>

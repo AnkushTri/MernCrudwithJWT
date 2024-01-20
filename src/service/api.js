@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-const API_URI ='http://localhost:5000'
+const API_URI ='https://ankucrud-api.onrender.com'
 
 export const registerUser=async(user)=>{
     try{

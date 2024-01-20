@@ -28,7 +28,7 @@ export const AuthProvider=({children})=>{
     //Authenication 
     const userAuthentication=async()=>{
         try{
-            let response = await fetch("http://localhost:5000/api/auth/user",{
+            let response = await fetch("https://ankucrud-api.onrender.com/api/auth/user",{
                 method:"GET",
                 headers:{
                     Authorization:`Bearer ${token}`,
