@@ -5,7 +5,7 @@ import { useAuth } from '../store/auth';
 
 const NavBar = () => {
 
-    const { loggedIn } = useAuth();
+    const { users, loggedIn } = useAuth();
 
     return (
         <>
@@ -27,9 +27,17 @@ const NavBar = () => {
                         <Link className="nav_link" to="/service">Services</Link>
                     </div>
                     {
-                        loggedIn ? <div className='nav_sec'>
-                            <Link className="nav_link" to="/logout">Logout</Link>
-                        </div> :
+                        loggedIn ?
+                            <>
+                                <div className='nav_sec'>
+                                    <Link className="nav_link" to="/logout">Logout</Link>
+                                </div>
+                                {users.isAdmin && (
+                                    <div className='nav_sec'>
+                                        <Link className="nav_link" to="/admin">Admin</Link>
+                                    </div>
+                                )}
+                            </> :
                             <>
                                 <div className='nav_sec'>
                                     <Link className="nav_link" to="/login">Login</Link>
